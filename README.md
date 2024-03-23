@@ -108,3 +108,6 @@ org.jetbrains.kotlin.kapt3.base.incremental.IncrementalProcessingEnvironment can
 
 
 
+[参考-让Annotation Processor支持增量编译](https://jiyang.site/posts/2020-03-24-%E8%AE%A9annotation-processor-%E6%94%AF%E6%8C%81%E5%A2%9E%E9%87%8F%E7%BC%96%E8%AF%91/)
+
+
