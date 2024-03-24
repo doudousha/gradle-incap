@@ -1,15 +1,32 @@
 
+### gradle支持增量编译
+创建\META-INF\gradle\incremental.annotation.processors文件,内容如下
+```
+org.example.EasyExcelProcessor,ISOLATING
+```
+
 
 ### 影响增量失效几个要素
 
-#### createSourceFile没有element
-```agsl
+#### 1. createSourceFile没有element
+```
 // 没有element，增量编译就会失效
 sourceFile = filer.createSourceFile(simpleName+"java");
 // 加一个element，就可以增量编译
 sourceFile = filer.createSourceFile(simpleName+"java",classElement);
 
 ```
+
+#### 2. 增量指定聚合模式(AGGREGATING)
+```
+// 聚合会让增量模式失效，暂时没有找到解决方案
+@IncrementalAnnotationProcessor(IncrementalAnnotationProcessorType.AGGREGATING)
+// 解决方案
+@IncrementalAnnotationProcessor(IncrementalAnnotationProcessorType.ISOLATING)
+```
+
+#### 3. 获取filter方式
+见getJavacFiler()方法
 
 ### 增量编译”JavacTrees、JavacFiler、JavacProcessingEnvironment“ 变化
 
